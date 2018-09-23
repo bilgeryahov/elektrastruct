@@ -2,7 +2,6 @@
   "name": "elektrastruct",
   "version": "1.0.0",
   "description": "Later.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,12 +10,17 @@
     "url": "git+https://github.com/bilgeryahov/elektrastruct.git"
   },
   "keywords": [
-    "Elektra"
+    "Elektra",
+    "Structure"
   ],
   "author": "Bilger Yahov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bilgeryahov/elektrastruct/issues"
   },
-  "homepage": "https://github.com/bilgeryahov/elektrastruct#readme"
+  "homepage": "https://github.com/bilgeryahov/elektrastruct#readme",
+  "devDependencies": {
+    "child-process-promise": "^2.2.1",
+    "gulp": "^3.9.1"
+  }
 }
