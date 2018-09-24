@@ -14,10 +14,10 @@ module.exports = {
     MODULES_BASE_PATH: `./app/modules/`,
     
     getModulesBasePath: () => {
-        return MODULES_BASE_PATH;
+        return module.exports.MODULES_BASE_PATH;
     },
     
     constructSingleModuleBasePath: (moduleName) => {
-        return `${MODULES_BASE_PATH}${moduleName}/`;
+        return `${module.exports.MODULES_BASE_PATH}${moduleName}/`;
     }
 }
