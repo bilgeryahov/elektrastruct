@@ -11,6 +11,6 @@
 'use strict';
 
 const gulp = require('gulp');
-require('./src/main-process-tasks.js')();
+require('./src/gulp-tasks')();
 
-gulp.task('cm', ['create_module']);
+gulp.task('cm', ['createModule']);
