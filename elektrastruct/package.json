@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/bilgeryahov/elektrastruct#readme",
   "devDependencies": {
-    "child-process-promise": "^2.2.1",
     "gulp": "^3.9.1"
   }
 }
