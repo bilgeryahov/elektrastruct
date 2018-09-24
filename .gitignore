@@ -1,2 +1,6 @@
+# ignore all dependency-based files
 elektrastruct/node_modules
 elektrastruct/package-lock.json
+
+# ignore all process-generated files
+elektrastruct/app/
