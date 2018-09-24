@@ -16,7 +16,7 @@
 'use strict';
 
 module.exports = {
-    getJavaScriptCode = (moduleName) => {
+    getJavaScriptCode: (moduleName) => {
         return `
             const ${moduleName} = ( () => {
                 const Logic = {
@@ -35,7 +35,7 @@ module.exports = {
         `;
     },
 
-    getHTMLMarkup = (moduleName) => {
+    getHTMLMarkup: (moduleName) => {
         return `
             <div id="${moduleName}Module">
             </div>
