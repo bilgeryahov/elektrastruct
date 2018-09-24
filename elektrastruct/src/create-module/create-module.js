@@ -35,14 +35,14 @@ module.exports = {
      * @returns {Promise} Promise object, which represents the result of creating the 
      * directory.
      */
-    directoryInit = (moduleName) => {
+    directoryInit: (moduleName) => {
         return new Promise((resolve, reject) => {
             exec(`mkdir "./app/modules/${moduleName}/"`, (error, stdout, stderr) => {
                 if (error) {
                   reject(error);
                 }
-                console.log(`create-module.js#directoryInit(): stdout -> ${stdout}`);
-                console.error(`create-module.js#directoryInit(): stderr -> ${stderr}`);
+                if (stdout) console.log(`create-module.js#directoryInit(): stdout -> ${stdout}`);
+                if (stderr) console.error(`create-module.js#directoryInit(): stderr -> ${stderr}`);
                 resolve();
               });
         });
@@ -56,7 +56,7 @@ module.exports = {
      * 
      * @returns {Promise} Promise object, which represents the result of creating those files.
      */
-    filesInit = (moduleName) => {
+    filesInit: (moduleName) => {
         return new Promise((resolve, reject) => {
             exec(`touch ./app/modules/${moduleName}/${moduleName}.html` + ` ` +
                 `./app/modules/${moduleName}/${moduleName}.scss` + ` ` + 
@@ -64,8 +64,8 @@ module.exports = {
                 if (error) {
                   reject(error);
                 }
-                console.log(`create-module.js#filesInit(): stdout -> ${stdout}`);
-                console.error(`create-module.js#filesInit(): stderr -> ${stderr}`);
+                if (stdout) console.log(`create-module.js#filesInit(): stdout -> ${stdout}`);
+                if (stderr) console.error(`create-module.js#filesInit(): stderr -> ${stderr}`);
                 resolve();
               });
         });
@@ -80,7 +80,7 @@ module.exports = {
      * @returns {Promise} Promise object, which represents the result of a write operation
      * to the specified file.
      */
-    generateJavaScriptTemplate = (moduleName) => {
+    generateJavaScriptTemplate: (moduleName) => {
         return new Promise((resolve, reject) => {
             fs.writeFile(`./app/modules/${moduleName}/${moduleName}.js`, fileTemplates.getJavaScriptCode(moduleName),
                 (error) => {
@@ -101,7 +101,7 @@ module.exports = {
      * @returns {Promise} Promise object, which represents the result of a write operation
      * to the specified file.
      */
-    generateHTMLMarkup = (moduleName) => {
+    generateHTMLMarkup: (moduleName) => {
         return new Promise((resolve, reject) => {
             fs.writeFile(`./app/modules/${moduleName}/${moduleName}.html`, fileTemplates.getHTMLMarkup(moduleName),
                 (error) => {
