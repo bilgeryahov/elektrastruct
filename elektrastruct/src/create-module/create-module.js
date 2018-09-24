@@ -11,9 +11,9 @@
 
 'use strict';
 
-    // ------------------------------------------------------------
-    //                      Dependencies.
-    // ------------------------------------------------------------
+// ------------------------------------------------------------
+//                      Dependencies.
+// ------------------------------------------------------------
 
 // External.
 const exec = require('child_process').exec;
@@ -21,10 +21,11 @@ const fs = require('fs');
 
 // Internal.
 const fileTemplates = require('./file-templates');
+const utilities = require('../utilities');
 
-    // ------------------------------------------------------------
-    //                      Unit function implementations.
-    // ------------------------------------------------------------
+// ------------------------------------------------------------
+//                      Unit function implementations.
+// ------------------------------------------------------------
 
 module.exports = {
     /**
@@ -37,7 +38,7 @@ module.exports = {
      */
     directoryInit: (moduleName) => {
         return new Promise((resolve, reject) => {
-            exec(`mkdir "./app/modules/${moduleName}/"`, (error, stdout, stderr) => {
+            exec(`mkdir "${utilities.constructSingleModuleBasePath(moduleName)}"`, (error, stdout, stderr) => {
                 if (error) {
                   reject(error);
                 }
@@ -58,9 +59,9 @@ module.exports = {
      */
     filesInit: (moduleName) => {
         return new Promise((resolve, reject) => {
-            exec(`touch ./app/modules/${moduleName}/${moduleName}.html` + ` ` +
-                `./app/modules/${moduleName}/${moduleName}.scss` + ` ` + 
-                `./app/modules/${moduleName}/${moduleName}.js`, (error, stdout, stderr) => {
+            exec(`touch ${utilities.constructSingleModuleBasePath(moduleName)}${moduleName}.html` + ` ` +
+                `${utilities.constructSingleModuleBasePath(moduleName)}${moduleName}.scss` + ` ` + 
+                `${utilities.constructSingleModuleBasePath(moduleName)}${moduleName}.js`, (error, stdout, stderr) => {
                 if (error) {
                   reject(error);
                 }
@@ -82,7 +83,8 @@ module.exports = {
      */
     generateJavaScriptTemplate: (moduleName) => {
         return new Promise((resolve, reject) => {
-            fs.writeFile(`./app/modules/${moduleName}/${moduleName}.js`, fileTemplates.getJavaScriptCode(moduleName),
+            fs.writeFile(`${utilities.constructSingleModuleBasePath(moduleName)}${moduleName}.js`, 
+            fileTemplates.getJavaScriptCode(moduleName),
                 (error) => {
                     if (error) {
                         reject(error);
@@ -103,7 +105,8 @@ module.exports = {
      */
     generateHTMLMarkup: (moduleName) => {
         return new Promise((resolve, reject) => {
-            fs.writeFile(`./app/modules/${moduleName}/${moduleName}.html`, fileTemplates.getHTMLMarkup(moduleName),
+            fs.writeFile(`${utilities.constructSingleModuleBasePath(moduleName)}${moduleName}.html`, 
+            fileTemplates.getHTMLMarkup(moduleName),
                 (error) => {
                     if (error) {
                         reject(error);
