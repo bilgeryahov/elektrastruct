@@ -12,11 +12,14 @@
 
 module.exports = () => {
     // ------------------------------------------------------------
-    //                      Dependencies section.
+    //                      Dependencies.
     // ------------------------------------------------------------
 
     // External.
     const gulp = require('gulp');
+
+    // Internal.
+    const createModule = require('./create-module/create-module');
 
     // ------------------------------------------------------------
     //                      Gulp tasks implementations.
@@ -38,6 +41,19 @@ module.exports = () => {
 
         // TODO: Check for presence of another module with the same name.
 
-        // TODO: Take all the process steps for creating a new module.
+        return createModule.directoryInit(moduleName)
+            .then(() => {
+                return createModule.filesInit(moduleName);
+            })
+            .then(() => {
+                return createModule.generateJavaScriptTemplate(moduleName);
+            })
+            .then(() => {
+                return createModule.generateHTMLMarkup(moduleName);
+            })
+            .catch((error) => {
+                console.error('gulp-tasks.js#createModule(): Error!');
+                console.error(error);
+            });
     });
 };
