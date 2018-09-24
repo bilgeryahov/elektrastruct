@@ -17,9 +17,11 @@ module.exports = () => {
 
     // External.
     const gulp = require('gulp');
+    const fs = require('fs');
 
     // Internal.
     const createModule = require('./create-module/create-module');
+    const utilities = require('./utilities');
 
     // ------------------------------------------------------------
     //                      Gulp tasks implementations.
@@ -39,7 +41,11 @@ module.exports = () => {
         // Remove all non-letters.
         moduleName = moduleName.replace(/[^a-z]/gi, '');
 
-        // TODO: Check for presence of another module with the same name.
+        // Check for presence of another module with the same name.
+        if (fs.existsSync(utilities.constructSingleModuleBasePath(moduleName))) {
+            console.error('gulp-tasks.js#createModule(): Module with this name has already been created!');
+            return;
+        }
 
         return createModule.directoryInit(moduleName)
             .then(() => {
