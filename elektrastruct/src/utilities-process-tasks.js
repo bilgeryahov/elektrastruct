@@ -12,8 +12,6 @@
 
 module.exports = {
     generateJavaScriptTemplate (moduleName) {
-        // Remove all non-letters.
-        moduleName = moduleName.replace(/[^a-z]/gi, '');
         return `
             const ${moduleName} = ( () => {
                 const Logic = {

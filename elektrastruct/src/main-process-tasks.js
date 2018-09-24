@@ -38,6 +38,8 @@ module.exports = () => {
             console.error('task - create_module: Please provide a name for the module!');
             return;
         }
+        // Remove all non-letters.
+        moduleName = moduleName.replace(/[^a-z]/gi, '');
         // Initialize module files.
         return exec(`mkdir "./app/modules/${moduleName}/"`)
             .then(() => {
@@ -58,10 +60,10 @@ module.exports = () => {
                 });
             })
             .then(() => {
-                console.log('task - create_module: Finished creating module!');
+                console.log(`task - create_module: Finished creating ${moduleName} module!`);
             })
             .catch((error) => {
-                console.error(`task - create_module: Creating module failed!`);
+                console.error(`task - create_module: Creating ${moduleName} module failed!`);
                 console.error(error);
             });
     });
