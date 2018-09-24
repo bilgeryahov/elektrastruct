@@ -22,15 +22,15 @@ module.exports = () => {
     //                      Gulp tasks implementations.
     // ------------------------------------------------------------
 
-    gulp.task('create_module', () => {
+    gulp.task('createModule', () => {
         // Prepare name for the new module.
         if (process.argv.indexOf('--name') === -1) {
-            console.error('gulp-tasks.js#create_module(): Please provide --name flag!');
+            console.error('gulp-tasks.js#createModule(): Please provide --name flag!');
             return;
         }
         let moduleName = process.argv[process.argv.indexOf('--name') + 1];
         if (!moduleName || typeof moduleName === 'undefined' || moduleName === '') {
-            console.error('gulp-tasks.js#create_module(): Please provide a name for the module!');
+            console.error('gulp-tasks.js#createModule(): Please provide a name for the module!');
             return;
         }
         // Remove all non-letters.
